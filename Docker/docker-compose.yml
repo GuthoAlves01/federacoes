@@ -1,11 +1,34 @@
 version: '3.8'
 
 services:
+  api:
+    container_name: federation-api
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - environment.env
+    depends_on:
+      - mariadb
+    networks:
+      - rede-api
+
   mariadb:
     image: mariadb:11.3
+    container_name: federation-maria-db-11_3
     env_file:
       - environment.env
     ports:
       - "3306:3306"
+    networks:
+      - rede-api
     volumes:
       - "./data:/var/lib/mysql"
+
+networks:
+  rede-api:
+    driver: bridge
+  rede-db:
+    driver: bridge
