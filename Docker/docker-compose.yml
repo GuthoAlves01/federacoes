@@ -13,7 +13,6 @@ services:
     depends_on:
       - mariadb
     networks:
-      - rede-api
       - rede-db
 
   mariadb:
@@ -24,12 +23,10 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - rede-api
+      - rede-db
     volumes:
       - "./data:/var/lib/mysql"
 
 networks:
-  rede-api:
-    driver: bridge
   rede-db:
     driver: bridge
