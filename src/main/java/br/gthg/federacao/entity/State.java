@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "STATE")
+@Table(name = "state")
 @Entity
 public class State implements Serializable {
     @Id

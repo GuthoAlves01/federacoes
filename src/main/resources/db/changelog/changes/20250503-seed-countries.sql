@@ -1,7 +1,7 @@
 -- liquibase formatted sql
 
 -- changeset autor:gutho_alves:seed-countries
-INSERT INTO COUNTRIES (NAME, CODE, DESCRIPTION, LATITUDE, LONGITUDE)
+INSERT INTO countries (NAME, CODE, DESCRIPTION, LATITUDE, LONGITUDE)
 VALUES
     ('United States', 'USA', 'A country in North America known for its global influence and power', 37.0902, -95.7129),
     ('Brazil', 'BRA', 'Largest country in South America known for its diverse culture and Amazon rainforest', -14.2350, -51.9253),

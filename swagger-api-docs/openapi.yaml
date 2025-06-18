@@ -1,0 +1,228 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Federações",
+      "description": "API com endPoint para fornecer informações das unidades federativas"
+    }
+  ],
+  "paths": {
+    "/federation/country/{country_id}": {
+      "get": {
+        "tags": [
+          "Federações"
+        ],
+        "description": "Retorna o país pelo ID",
+        "operationId": "findCountry",
+        "parameters": [
+          {
+            "name": "country_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/federation/country/{country_id}/state/all": {
+      "get": {
+        "tags": [
+          "Federações"
+        ],
+        "description": "Retorna o todos os estados pelo ID do País",
+        "operationId": "getAllStatesByCountry",
+        "parameters": [
+          {
+            "name": "country_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/State"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/federation/country/state/{state_id}": {
+      "get": {
+        "tags": [
+          "Federações"
+        ],
+        "description": "Retorna o estado pelo ID do estado",
+        "operationId": "findState",
+        "parameters": [
+          {
+            "name": "state_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/State"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/federation/country/code/{country_code}/state/all": {
+      "get": {
+        "tags": [
+          "Federações"
+        ],
+        "description": "Retorna o país pelo código do país",
+        "operationId": "getAllStates",
+        "parameters": [
+          {
+            "name": "country_code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/State"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/federation/country/all": {
+      "get": {
+        "tags": [
+          "Federações"
+        ],
+        "description": "Retorna uma lista com todos os países",
+        "operationId": "getAllCountry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Country": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        }
+      },
+      "State": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "country": {
+            "$ref": "#/components/schemas/Country"
+          }
+        }
+      }
+    }
+  }
+}

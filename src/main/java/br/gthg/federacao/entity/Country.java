@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "COUNTRIES")
+@Table(name = "countries")
 @Entity
 public class Country implements Serializable {
     @Id

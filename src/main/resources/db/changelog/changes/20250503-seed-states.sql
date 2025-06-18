@@ -2,9 +2,9 @@
 
 -- changeset autor:gutho_alves:seed-states
 
-SET @brazil_uuid = (SELECT ID FROM COUNTRIES WHERE NAME = 'Brazil');
+SET @brazil_uuid = (SELECT ID FROM countries WHERE NAME = 'Brazil');
 
-INSERT INTO STATE (NAME, CODE, DESCRIPTION, LATITUDE, LONGITUDE, COUNTRY_ID)
+INSERT INTO state (NAME, CODE, DESCRIPTION, LATITUDE, LONGITUDE, COUNTRY_ID)
 VALUES
     ('Acre', 'AC', 'Acre é um estado localizado na região Norte do Brasil, conhecido por sua biodiversidade e florestas tropicais.', -8.7742, -70.5358, @brazil_uuid),
     ('Alagoas', 'AL', 'Alagoas é um estado localizado na região Nordeste, famoso pelas suas belas praias e clima tropical.', -9.2197, -36.7820, @brazil_uuid),
